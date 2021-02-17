@@ -15,7 +15,8 @@ def hotp(secret, intervals_no):
 
 
 def totp(secret):
-    return hotp(secret, intervals_no=int(time.time()) // 30), str(round(30 - time.time() % 30)) + "s"
+    return "{:06d}".format(hotp(secret, intervals_no=int(
+        time.time()) // 30)), str(round(30 - time.time() % 30)) + "s"
 
 
 secret = 'TESTABCDEFGHIJKL'
